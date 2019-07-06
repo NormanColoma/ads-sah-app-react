@@ -2,9 +2,10 @@ import React, { useReducer, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { adsReducer, initialState } from './reducers';
-import { getAdsFilter } from './actions';
+import { getAdsFilter, downloadAds } from './actions';
 import Ads from './components/ads/ads';
 import AdSort from './components/ad-sort/ad-sort';
+import AdDownloadBtn from './components/ad-download-btn/ad-download-btn';
 
 const App = () => {
   const [state, dispatch] = useReducer(adsReducer, initialState);
@@ -33,6 +34,10 @@ const App = () => {
     getAdsFilter('getAdsSorted', dispatch, { page: page, sortedBy: sortOption, direction: 1 });
    }
 
+   const handleDownloadAdBtnClick = () => {
+    downloadAds({ untilPage: page, sortedBy: sort, direction: 1 });
+   }
+
   const sortOpts = ['id', 'title', 'link', 'city', 'image']
   return(
     <Router>
@@ -42,6 +47,7 @@ const App = () => {
             Welcome to <code>Spotahome</code>!!
           </p>
         </header>
+        <AdDownloadBtn handleDownloadAdBtnClick={handleDownloadAdBtnClick} />
         <AdSort sortOpts={sortOpts} handleSortOptClick={handleSortOptionClick}/>
         <Switch>
           <Redirect exact from="/" to="/ads"></Redirect>

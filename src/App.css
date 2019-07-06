@@ -35,3 +35,25 @@
 ul {
   list-style: none;
 }
+
+.download-btn {
+    outline: none;
+    border-radius: 2px;
+    border: none;
+    background: #f6f9ff;
+    font-size: 14px;
+    color: #545e6f;
+    float: right;
+    margin-right: 55px;
+    font-weight: 600;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.download-btn svg {
+  float: left;
+  padding: 10px;
+  color: #008CBA;
+  -webkit-transition: .2s ease all;
+  transition: .2s ease all;
+}
