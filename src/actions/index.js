@@ -1,9 +1,11 @@
 import fetch from 'cross-fetch';
+const { REACT_APP_API_URL: API_URL } = process.env;
 
 export const getAdsFilter = async(type, dispatch, params) => {
     const { sortedBy, direction, page } = params;
 
-    const response = await fetch(`http://localhost:8000/ads?page=${page}&sortedBy=${sortedBy}&direction=${direction}`);
+    debugger;
+    const response = await fetch(`${API_URL}/ads?page=${page}&sortedBy=${sortedBy}&direction=${direction}`);
     const payload = await response.json();
     
     dispatch({ type, payload });
@@ -12,7 +14,8 @@ export const getAdsFilter = async(type, dispatch, params) => {
 export const downloadAds = async(params) => {
     const { sortedBy, direction, untilPage } = params;
 
-    const response = await fetch(`http://localhost:8000/ads/json?untilPage=${untilPage}&sortedBy=${sortedBy}&direction=${direction}`);
+    debugger;
+    const response = await fetch(`${API_URL}/ads/json?untilPage=${untilPage}&sortedBy=${sortedBy}&direction=${direction}`);
     const payload = await response.blob();
 
     const url = window.URL.createObjectURL(new Blob([payload]));
