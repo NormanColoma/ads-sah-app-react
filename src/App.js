@@ -49,7 +49,7 @@ const App = () => {
           </p>
         </header>
         <AdDownloadBtn handleDownloadAdBtnClick={handleDownloadAdBtnClick} />
-        <AdSort sortOpts={sortOpts} handleSortOptClick={handleSortOptionClick}/>
+        <AdSort sortOpts={sortOpts} sortSelected={sort} handleSortOptClick={handleSortOptionClick}/>
         <Switch>
           <Redirect exact from="/" to="/ads"></Redirect>
           <Route path="/ads" render={(props) => <Ads {...props} ads={ads} loading={loading}></Ads>} />

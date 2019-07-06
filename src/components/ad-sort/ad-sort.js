@@ -1,7 +1,7 @@
 import React from 'react';
 import './ad-sort.css';
 
-const AdSort = ({ sortOpts,  handleSortOptClick}) => {
+const AdSort = ({ sortOpts, sortSelected,  handleSortOptClick}) => {
     const handleFilterClick = (e) => {
         if (e.target.tagName === "SPAN" || e.target.tagName === "path" || e.target.tagName === "BUTTON") {
           const sortList = document.querySelector('.select-filter');
@@ -18,7 +18,7 @@ const AdSort = ({ sortOpts,  handleSortOptClick}) => {
         <div>
           <button className="btn-filter" onClick={handleFilterClick} >
               <i className="fas fa-filter"></i> 
-              <span>Sort</span>
+              <span>Sorted by: <strong>{sortSelected}</strong></span>
               <ul className="select-filter">
                 {sortOptions}
               </ul>
