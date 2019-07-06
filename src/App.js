@@ -35,7 +35,8 @@ const App = () => {
    }
 
    const handleDownloadAdBtnClick = () => {
-    downloadAds({ untilPage: page, sortedBy: sort, direction: 1 });
+    const requestedPage = page > 0 ? page : 1;
+    downloadAds({ untilPage: requestedPage, sortedBy: sort, direction: 1 });
    }
 
   const sortOpts = ['id', 'title', 'link', 'city', 'image']
