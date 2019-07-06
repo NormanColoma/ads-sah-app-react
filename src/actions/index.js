@@ -4,7 +4,6 @@ const { REACT_APP_API_URL: API_URL } = process.env;
 export const getAdsFilter = async(type, dispatch, params) => {
     const { sortedBy, direction, page } = params;
 
-    debugger;
     const response = await fetch(`${API_URL}/ads?page=${page}&sortedBy=${sortedBy}&direction=${direction}`);
     const payload = await response.json();
     
@@ -14,7 +13,6 @@ export const getAdsFilter = async(type, dispatch, params) => {
 export const downloadAds = async(params) => {
     const { sortedBy, direction, untilPage } = params;
 
-    debugger;
     const response = await fetch(`${API_URL}/ads/json?untilPage=${untilPage}&sortedBy=${sortedBy}&direction=${direction}`);
     const payload = await response.blob();
 
