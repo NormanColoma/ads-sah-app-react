@@ -1,13 +1,13 @@
-ul {
+.ad-list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-between;
     width: 1350px;
-    margin-top: 2em;
+    margin-top: 5em;
 }
-ul li {
+.ad-list li {
     width: 400px;
     height: 360px;
     box-shadow: 0 8px 30px rgba(0,29,54,0.1);
@@ -20,13 +20,13 @@ ul li {
     margin-bottom: 100px;
 }
 
-ul li:hover {
+.ad-list li:hover {
     transform: scale(1.075);
     -ms-transform: scale(1.075);
     -webkit-transform: scale(1.075);
 }
 
-ul li img {
+.ad-list li img {
     height: 225px;
     border-radius: 2px;
 }

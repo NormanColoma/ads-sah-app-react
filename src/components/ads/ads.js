@@ -11,7 +11,7 @@ const Ads = ({ ads, loading }) => {
     const renderedAds = ads.map(ad => <AdItem {...ad} key={ad.id}/> );
 
     return (
-      <ul>
+      <ul className="ad-list">
           { renderedAds }
       </ul>
     );
