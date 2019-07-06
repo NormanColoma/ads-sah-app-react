@@ -1,4 +1,32 @@
+ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 1350px;
+    margin-top: 2em;
+}
 ul li {
-    list-style: none;
-    margin-bottom: 50px;
+    width: 400px;
+    height: 360px;
+    box-shadow: 0 8px 30px rgba(0,29,54,0.1);
+    border-radius: 5px;
+    box-sizing: border-box;
+    -webkit-transition: .2s all ease;
+    transition: .2s all ease;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+
+ul li:hover {
+    transform: scale(1.075);
+    -ms-transform: scale(1.075);
+    -webkit-transform: scale(1.075);
+}
+
+ul li img {
+    height: 225px;
+    border-radius: 2px;
 }

@@ -1,8 +1,8 @@
 import React from "react";
 
 const AdItem = ({ id, title, link, city, main_image }) => {
-    return (<li key={id}>
-        <div>
+    return (<li>
+        <div className="">
             <strong>{ id }</strong>
             <p>{title}</p>
             <a href={link} target="_blank">{link}</a>

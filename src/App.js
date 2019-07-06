@@ -7,11 +7,25 @@ import Ads from './components/ads/ads';
 
 const App = () => {
   const [state, dispatch] = useReducer(adsReducer, initialState);
-  const { ads, loading } = state;
+  const { ads, loading, page } = state;
   
   useEffect(() => {
     getAdsFilter('getAds', dispatch, { page: 0, sortedBy: 'id', direction: 1 });
-  }, [ads.length, loading]);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    }
+  }, [page]);
+
+  const handleScroll = (event) => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      dispatch({ type: 'incrementPage'});
+      getAdsFilter('getAds', dispatch, { page: page+1, sortedBy: 'id', direction: 1 });
+    }
+  };
 
   return(
     <Router>
