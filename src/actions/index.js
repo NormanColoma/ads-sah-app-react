@@ -5,11 +5,14 @@ export const getAdsFilter = async(type, dispatch, params) => {
     const { sortedBy, direction, page } = params;
 
     const response = await fetch(`${API_URL}/ads?page=${page}&sortedBy=${sortedBy}&direction=${direction}`);
-    const payload = await response.json();
-    dispatch({ type, payload });
+    
+    if (response.status === 200) {
+        const payload = await response.json();
+        dispatch({ type, payload });
 
-    if (payload.length > 0) {
-        dispatch({ type: 'incrementPage'});
+        if (payload.length > 0) {
+            dispatch({ type: 'incrementPage'});
+        }
     }
 }
 
@@ -17,16 +20,19 @@ export const downloadAds = async(params) => {
     const { sortedBy, direction, untilPage } = params;
 
     const response = await fetch(`${API_URL}/ads/json?untilPage=${untilPage}&sortedBy=${sortedBy}&direction=${direction}`);
-    const payload = await response.blob();
 
-    const url = window.URL.createObjectURL(new Blob([payload]));
-    const link = document.createElement('a');
+    if (response.status === 200) {
+        const payload = await response.blob();
 
-    link.href = url;
-    link.setAttribute('download', 'ads.json');
+        const url = window.URL.createObjectURL(new Blob([payload]));
+        const link = document.createElement('a');
 
-    document.body.appendChild(link);
-    link.click();
+        link.href = url;
+        link.setAttribute('download', 'ads.json');
 
-    link.parentNode.removeChild(link);
+        document.body.appendChild(link);
+        link.click();
+
+        link.parentNode.removeChild(link);
+    }
 }
