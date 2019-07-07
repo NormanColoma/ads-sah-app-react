@@ -23,8 +23,8 @@ const App = () => {
   }, [page, sort]);
 
   const handleScroll = (event) => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      dispatch({ type: 'incrementPage'});
+    const endOfAdsReached = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+    if (endOfAdsReached) {
       getAdsFilter('getAds', dispatch, { page: page+1, sortedBy: sort, direction: 1 });
     }
   };

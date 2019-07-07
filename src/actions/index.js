@@ -6,8 +6,11 @@ export const getAdsFilter = async(type, dispatch, params) => {
 
     const response = await fetch(`${API_URL}/ads?page=${page}&sortedBy=${sortedBy}&direction=${direction}`);
     const payload = await response.json();
-    
     dispatch({ type, payload });
+
+    if (payload.length > 0) {
+        dispatch({ type: 'incrementPage'});
+    }
 }
 
 export const downloadAds = async(params) => {
